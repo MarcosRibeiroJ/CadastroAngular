@@ -19,9 +19,3 @@
     background-color: rgb(102, 121, 207);
     color: black;
   }
-  
-  /* Adicionando uma cor para o link ativo */
-  .topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
