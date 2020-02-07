@@ -1,34 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
-input[type=text] {
+input[type=text], input[type=email], input[type=date] {
     border: none;
     border-bottom: 2px solid blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
 }
 
-input[type=text]:focus {
-    background-color: lightblue;
-}
-
-input[type=email] {
-    border: none;
-    border-bottom: 2px solid blue;
-}
-
-input[type=email]:focus {
-    background-color: lightblue;
-}
-
-input[type=date] {
-    border: none;
-    border-bottom: 2px solid blue;
-}
-
-input[type=date]:focus {
+input[type=text]:focus, input[type=email]:focus, input[type=date]:focus {
     background-color: lightblue;
 }
 
 select {
     border: none;
     border-bottom: 2px solid blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
 }
 
- 
+div {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+}
+
+.distancia {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-weight: bold;
+    background-color: rgba(167, 173, 199, 0.836);
+}
+
+button:hover {
+    background-color: rgb(102, 121, 207);
+    color: rgb(0, 0, 0);
+    transition-duration: 1.0s;
+    font-weight: bold;
+    padding: 10px 24px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
