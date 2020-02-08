@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FornecedoresComponent } from './fornecedores/fornecedores.component';
+import { ApenasNumeros } from './apenas-numeros';
+import { ApenasTextos } from './apenas-texto';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ClientesComponent,
-    FornecedoresComponent
+    FornecedoresComponent,
+    ApenasNumeros,
+    ApenasTextos
   ],
   imports: [
     BrowserModule,
