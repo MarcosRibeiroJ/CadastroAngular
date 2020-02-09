@@ -169,4 +169,61 @@ export class FornecedoresComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("cep")).value = novaString;
   }
 
+  validaCpf(cpf: string) {
+    var pg: number = 10;
+    var sg: number = 11;
+    var i: number;
+    var somapg: number = 0;
+    var somasg: number = 0;
+    var primeirodigito: number;
+    var segundodigito: number;
+
+    this.valorCpf = cpf;
+    if(this.valorCpf.length != 11 || 
+      this.valorCpf == "00000000000" || 
+      this.valorCpf == "11111111111" || 
+      this.valorCpf == "22222222222" || 
+      this.valorCpf == "33333333333" || 
+      this.valorCpf == "44444444444" || 
+      this.valorCpf == "55555555555" || 
+      this.valorCpf == "66666666666" || 
+      this.valorCpf == "77777777777" || 
+      this.valorCpf == "88888888888" || 
+      this.valorCpf == "99999999999") {
+        alert("CPF Inválido!");
+        (<HTMLInputElement>document.getElementById("cpf")).value = '';
+      } else {
+        for(i = 0; i <= 8; i++) {
+          somapg += parseInt(this.valorCpf.charAt(i)) * pg;
+          pg--;
+        }
+        if(somapg % 11 < 2) {
+          primeirodigito = 0;
+        } else {
+          primeirodigito = 11 - (somapg % 11);
+        }
+        if(primeirodigito !== parseInt(this.valorCpf.charAt(9))) {
+          alert("CPF Inválido!");
+          (<HTMLInputElement>document.getElementById("cpf")).value = '';
+        } else {
+            for(i = 0; i <= 8; i++) {
+              somasg += parseInt(this.valorCpf.charAt(i)) * sg;
+              sg--;
+            }
+            somasg += primeirodigito * 2;
+            if(somasg % 11 < 2) {
+              segundodigito = 0;
+            } else {
+              segundodigito = 11 - (somasg % 11);
+            }
+            if(segundodigito !== parseInt(this.valorCpf.charAt(10))) {
+              (<HTMLInputElement>document.getElementById("cpf")).value = '';
+            } else {
+              this.formataCpf((<HTMLInputElement>document.getElementById("cpf")).value);
+            }
+        }
+      }
+    
+  }
+
 }
