@@ -1,21 +1,21 @@
 <div style="margin-top: 20px;">
     <label [class.obrigatorio]="razaoVazio">*Razão Social:</label><br><br>
-    <input type="text" id="razao" size="100" (blur)="inputRazaoVazio($event.target.value)"><br><br><br>
+    <input type="text" id="razao" size="100" (blur)="inputRazaoVazio($event.target.value)" maxlength="90"><br><br><br>
     <label [class.obrigatorio]="cnpjVazio">*CNPJ:</label>
     <input type="text" id="cnpj" size="18" NumberOnly (blur)="inputCnpjVazio($event.target.value)" (blur)="formataCnpj($event.target.value)" maxlength="14"><br><br><br>
     Nome Fantasia:<br><br>
-    <input type="text" id="fantasia" size="100"><br><br><br>
+    <input type="text" id="fantasia" size="100" maxlength="90"><br><br><br>
     <label [class.obrigatorio]="nomeVazio">*Responsável Legal:</label><br><br>
-    <input type="text" id="nome" size="100" TextOnly (blur)="inputNomeVazio($event.target.value)"><br><br><br>
+    <input type="text" id="nome" size="100" TextOnly (blur)="inputNomeVazio($event.target.value)" maxlength="90"><br><br><br>
     <label [class.obrigatorio]="cpfVazio">*CPF:</label>
     <input type="text" id="cpf" size="14" NumberOnly (blur)="inputCpfVazio($event.target.value)" (blur)="formataCpf($event.target.value)" maxlength="11"><br><br><br>
     Data de nascimento:
     <input type="date" id="nascimento"><br><br>
-    <label [class.obrigatorio]="emailVazio">*Email: </label><input type="email" id="email" size="30" (blur)="inputEmailVazio($event.target.value)">
+    <label [class.obrigatorio]="emailVazio">*Email: </label><input type="email" id="email" size="50" (blur)="inputEmailVazio($event.target.value)" maxlength="45">
     <span class="distancia"><label [class.obrigatorio]="celularVazio">*Celular: </label><input type="text" id="celular" size="14" NumberOnly (blur)="inputCelularVazio($event.target.value)" (blur)="formataCelular($event.target.value)" maxlength="11"></span><br><br><br>
-    CEP: <input type="text" id="cep" size="9" NumberOnly (blur)="formataCep($event.target.value)" maxlength="8"><span class="distancia">Endereço (Rua / Avenida): <input type="text" id="endereco" size="50"></span><br><br><br>
-    Nº: <input type="text" id="numero" size="4" NumberOnly><span class="distancia">Complemento: <input type="text" id="complemento" size="10"></span><br><br><br>
-    Bairro: <input type="text" id="bairro" size="20"><span class="distancia">Cidade: <input type="text" id="cidade" size="15" TextOnly></span> 
+    CEP: <input type="text" id="cep" size="9" NumberOnly (blur)="formataCep($event.target.value)" maxlength="8"><span class="distancia">Endereço (Rua / Avenida): <input type="text" id="endereco" size="50" maxlength="45"></span><br><br><br>
+    Nº: <input type="text" id="numero" size="6" NumberOnly maxlength="6"><span class="distancia">Complemento: <input type="text" id="complemento" size="10" maxlength="9"></span><br><br><br>
+    Bairro: <input type="text" id="bairro" size="25" maxlength="24"><span class="distancia">Cidade: <input type="text" id="cidade" size="20" TextOnly maxlength="19"></span> 
     UF: 
     <select name="estado" id="uf"> 
         <option value="estado"></option> 
