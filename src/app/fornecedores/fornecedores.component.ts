@@ -12,13 +12,14 @@ export class FornecedoresComponent implements OnInit {
   nomeVazio: boolean = false;
   emailVazio: boolean = false;
   cpfVazio: boolean = false;
-  telefoneVazio: boolean = false;
+  celularVazio: boolean = false;
   valorRazao: string;
   valorCnpj: string;
   valorNome: string;
   valorEmail: string;
   valorCpf: string;
-  valorTelefone: string;
+  valorCelular: string;
+  valorCep: string;
 
   constructor() { }
 
@@ -31,7 +32,7 @@ export class FornecedoresComponent implements OnInit {
     this.valorNome = (<HTMLInputElement>document.getElementById("nome")).value;
     this.valorEmail = (<HTMLInputElement>document.getElementById("email")).value;
     this.valorCpf = (<HTMLInputElement>document.getElementById("cpf")).value;
-    this.valorTelefone = (<HTMLInputElement>document.getElementById("telefone")).value;
+    this.valorCelular = (<HTMLInputElement>document.getElementById("celular")).value;
     
     if(this.valorRazao == "") {
       this.razaoVazio = true;
@@ -58,15 +59,15 @@ export class FornecedoresComponent implements OnInit {
     } else {
       this.cpfVazio = false;
     }
-    if(this.valorTelefone == "") {
-      this.telefoneVazio = true;
+    if(this.valorCelular == "") {
+      this.celularVazio = true;
     } else {
-      this.telefoneVazio = false;
+      this.celularVazio = false;
     }
-    if(this.valorRazao == "" || this.valorCnpj == "" || this.valorNome == "" || this.valorEmail == "" || this.valorCpf == "" || this.valorTelefone == "") {
+    if(this.valorRazao == "" || this.valorCnpj == "" || this.valorNome == "" || this.valorEmail == "" || this.valorCpf == "" || this.valorCelular == "") {
       alert("Campos em vermelho são obrigatórios");
     }
-    if(this.valorRazao !== "" && this.valorCnpj !== "" && this.valorNome !== "" && this.valorEmail !== "" && this.valorCpf !== "" && this.valorTelefone !== "") {
+    if(this.valorRazao !== "" && this.valorCnpj !== "" && this.valorNome !== "" && this.valorEmail !== "" && this.valorCpf !== "" && this.valorCelular !== "") {
       alert("Cadastro realizado com sucesso!");
       this.limparCampos();
     }
@@ -80,7 +81,7 @@ export class FornecedoresComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("cpf")).value = '';
     (<HTMLInputElement>document.getElementById("nascimento")).value = '';
     (<HTMLInputElement>document.getElementById("email")).value = '';
-    (<HTMLInputElement>document.getElementById("telefone")).value = '';
+    (<HTMLInputElement>document.getElementById("celular")).value = '';
     (<HTMLInputElement>document.getElementById("cep")).value = '';
     (<HTMLInputElement>document.getElementById("endereco")).value = '';
     (<HTMLInputElement>document.getElementById("numero")).value = '';
@@ -135,13 +136,37 @@ export class FornecedoresComponent implements OnInit {
     }
   }
 
-  inputTelefoneVazio(telefone: string) {
-    this.valorTelefone = telefone;
+  inputCelularVazio(telefone: string) {
+    this.valorCelular = telefone;
     if(telefone == "") {
-      this.telefoneVazio = true;
+      this.celularVazio = true;
     } else {
-      this.telefoneVazio = false;
+      this.celularVazio = false;
     }
+  }
+
+  formataCnpj(cnpj: string) {
+    this.valorCnpj = cnpj;
+    var novaString = this.valorCnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g,"\$1.\$2.\$3\/\$4\-\$5");
+    (<HTMLInputElement>document.getElementById("cnpj")).value = novaString;
+  }
+
+  formataCpf(cpf: string) {
+    this.valorCpf = cpf;
+    var novaString = this.valorCpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g,"\$1.\$2.\$3\-\$4");
+    (<HTMLInputElement>document.getElementById("cpf")).value = novaString;
+  }
+
+  formataCelular(celular: string) {
+    this.valorCelular = celular;
+    var novaString = this.valorCelular.replace(/(\d{2})(\d{5})(\d{4})/g,"\(\$1\)\$2\-\$3");
+    (<HTMLInputElement>document.getElementById("celular")).value = novaString;
+  }
+
+  formataCep(cep: string) {
+    this.valorCep = cep;
+    var novaString = this.valorCep.replace(/(\d{5})(\d{3})/g,"\$1\-\$2");
+    (<HTMLInputElement>document.getElementById("cep")).value = novaString;
   }
 
 }
