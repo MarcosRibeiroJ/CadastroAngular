@@ -226,4 +226,66 @@ export class FornecedoresComponent implements OnInit {
     
   }
 
+  validaCnpj(cnpj: string) {
+    var pg1: number = 5;
+    var pg2: number = 9;
+    var sg1: number = 6;
+    var sg2: number = 9;
+    var i: number;
+    var somapg1: number = 0;
+    var somapg2: number = 0;
+    var somasg1: number = 0;
+    var somasg2: number = 0;
+    var primeirodigito: number;
+    var segundodigito: number;
+
+    this.valorCnpj = cnpj;
+
+    if(this.valorCnpj.length !== 14 || this.valorCnpj == "00000000000000") {
+      alert("CNPJ Invalido!");
+      (<HTMLInputElement>document.getElementById("cnpj")).value = '';
+    } else {
+      for(i = 0; i <= 3; i++) {
+        somapg1 += parseInt(this.valorCnpj.charAt(i)) * pg1;
+        pg1--;
+      }
+      for(i = 4; i <= 11; i++) {
+        somapg2 += parseInt(this.valorCnpj.charAt(i)) * pg2;
+        pg2--;
+      }
+      if((somapg1 + somapg2) % 11 < 2) {
+        primeirodigito = 0;
+      } else {
+        primeirodigito = 11 - ((somapg1 + somapg2) % 11);
+      }
+      if(primeirodigito !== parseInt(this.valorCnpj.charAt(12))) {
+        alert("CNPJ Invalido!");
+        (<HTMLInputElement>document.getElementById("cnpj")).value = '';
+      } else {
+        for(i = 0; i <= 4; i++) {
+          somasg1 += parseInt(this.valorCnpj.charAt(i)) * sg1;
+          sg1--;
+        }
+        for(i = 5; i <= 11; i++) {
+          somasg2 += parseInt(this.valorCnpj.charAt(i)) * sg2;
+          sg2--;
+        }
+        somasg2 += primeirodigito * 2;
+        if((somasg1 + somasg2) % 11 < 2) {
+          segundodigito = 0;
+        } else {
+          segundodigito = 11 - ((somasg1 + somasg2) % 11);
+        }
+        if(segundodigito !== parseInt(this.valorCnpj.charAt(13))) {
+          alert("CNPJ Invalido!");
+          (<HTMLInputElement>document.getElementById("cnpj")).value = '';
+        } else {
+          this.formataCnpj((<HTMLInputElement>document.getElementById("cnpj")).value);
+        }
+      }
+    }
+    
+    
+  }
+
 }

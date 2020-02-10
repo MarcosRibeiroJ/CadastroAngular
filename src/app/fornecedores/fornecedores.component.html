@@ -2,7 +2,7 @@
     <label [class.obrigatorio]="razaoVazio">*Razão Social:</label><br><br>
     <input type="text" id="razao" size="100" (blur)="inputRazaoVazio($event.target.value)" maxlength="90"><br><br><br>
     <label [class.obrigatorio]="cnpjVazio">*CNPJ:</label>
-    <input type="text" id="cnpj" size="18" NumberOnly (blur)="inputCnpjVazio($event.target.value)" (blur)="formataCnpj($event.target.value)" maxlength="14"><br><br><br>
+    <input type="text" id="cnpj" size="18" NumberOnly (blur)="inputCnpjVazio($event.target.value)" (blur)="validaCnpj($event.target.value)" maxlength="14"><br><br><br>
     Nome Fantasia:<br><br>
     <input type="text" id="fantasia" size="100" maxlength="90"><br><br><br>
     <label [class.obrigatorio]="nomeVazio">*Responsável Legal:</label><br><br>
